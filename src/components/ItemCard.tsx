@@ -2,14 +2,14 @@ import { useAppDispatch } from "@/lib/store";
 import { Item } from "../interfaces/interfaces";
 import QtyButton from "./QtyButton";
 import { decrement, increment } from "@/lib/features/cart/cartSlice";
+import React from "react";
 
 interface Props {
   item: Item;
   qty: number;
 }
 
-export default function ItemCard({ item, qty }: Props) {
-  // const { name, event, price, id } = item;
+const ItemCard = ({ item, qty }: Props) => {
   const totalPrice = item.price * Math.max(qty, 1);
   const dispatch = useAppDispatch();
   return (
@@ -42,4 +42,6 @@ export default function ItemCard({ item, qty }: Props) {
       </div>
     </li>
   );
-}
+};
+
+export default React.memo(ItemCard);

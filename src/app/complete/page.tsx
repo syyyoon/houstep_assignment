@@ -7,6 +7,7 @@ import Image from "next/image";
 export default function CompletePage() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown((prev) => prev - 1);

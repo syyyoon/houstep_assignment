@@ -2,12 +2,12 @@ import { Item } from "../../../interfaces/interfaces";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface InitialState {
-  itemsList: Item[];
+  itemList: Item[];
   isLoading: boolean;
 }
 
 const initialState = {
-  itemsList: [],
+  itemList: [],
   isLoading: false,
 } as InitialState;
 
@@ -30,7 +30,7 @@ const itemsSlice = createSlice({
       .addCase(fetchItems.fulfilled, (state, action) => {
         // 비동기 작업이 성공하면 isLoading을 false로 설정하고 데이터를 저장
         state.isLoading = false;
-        state.itemsList = action.payload;
+        state.itemList = action.payload;
       });
   },
 });

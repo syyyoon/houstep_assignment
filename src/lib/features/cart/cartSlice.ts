@@ -45,15 +45,13 @@ export const cartSlice = createSlice({
         }
       }
     },
+    resetCart: (state) => {
+      state.cartItems = [];
+    },
   },
 });
 
 const cartItems = (state: RootState) => state.cart.cartItems;
-
-export const productQtyInCartSelector = createSelector(
-  [cartItems, (cartItems, itemId: string) => itemId],
-  (cartItems, itemId) => cartItems.find((el) => el.id === itemId)?.qty
-);
 
 export const totalCartItemsSelector = createSelector([cartItems], (cartItems) =>
   cartItems.reduce((total: number, curr: CartItem) => (total += curr.qty), 0)
@@ -65,5 +63,5 @@ export const totalPriceSelector = createSelector([cartItems], (cartItems) =>
   )
 );
 
-export const { increment, decrement } = cartSlice.actions;
+export const { increment, decrement, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;

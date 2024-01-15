@@ -11,8 +11,6 @@ export default function ItemsList({ items }: Props) {
   const [itemQty, setItemQty] = useState<{ [key: string]: number }>({});
   const cartItems = useAppSelector((state: RootState) => state.cart.cartItems);
 
-  console.log("itemQty", itemQty);
-
   useEffect(() => {
     const initialQty: { [key: string]: number } = {};
     items.forEach((item) => {
