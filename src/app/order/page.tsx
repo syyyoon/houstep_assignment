@@ -2,34 +2,31 @@
 import Header from "@/components/Header";
 import ItemsList from "@/components/ItemsList";
 import Loading from "@/components/Loading";
-import OrderActionBox from "@/components/OrderActionBox";
+import Cart from "@/components/Cart";
 import { useState, useEffect } from "react";
+import { RootState, useAppDispatch, useAppSelector } from "@/lib/store";
+import { fetchItems } from "@/lib/features/items/itemsSlice";
 
 export default function OrderPage() {
-  const [itemsList, setItemsList] = useState([]);
+  const dispatch = useAppDispatch();
+  const { itemsList, isLoading } = useAppSelector(
+    (state: RootState) => state.items
+  );
+
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/items");
-      const jsonData = await response.json();
-      setItemsList(jsonData);
-      setIsActive(true);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+    dispatch(fetchItems());
+    setIsActive(!isLoading);
+  }, [dispatch]);
 
   return (
     <div className="w-full h-screen flex flex-col justify-between bg-white">
       <Header />
-      {itemsList.length === 0 && <Loading />}
-      <ItemsList items={itemsList} />
-      <OrderActionBox qty={0} price={0} active={isActive} />
+      {isLoading && <Loading />}
+      {!isLoading && itemsList.length === 0 && <Loading />}
+      {!isLoading && itemsList.length > 0 && <ItemsList items={itemsList} />}
+      <Cart active={isActive} />
     </div>
   );
 }
