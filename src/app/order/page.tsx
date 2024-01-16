@@ -1,12 +1,12 @@
 "use client";
+
 import Header from "@/components/Header";
-import ItemsList from "@/components/ItemsList";
+import ItemList from "@/components/ItemList";
 import Loading from "@/components/Loading";
 import Cart from "@/components/Cart";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { RootState, useAppDispatch, useAppSelector } from "@/lib/store";
-import { fetchItems } from "@/lib/features/items/itemsSlice";
-import { resetCart } from "@/lib/features/cart/cartSlice";
+import { fetchItems, initItemList } from "@/lib/features/items/itemsSlice";
 
 export default function OrderPage() {
   const dispatch = useAppDispatch();
@@ -14,21 +14,28 @@ export default function OrderPage() {
   const { itemList, isLoading } = useAppSelector(
     (state: RootState) => state.items
   );
-  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    dispatch(initItemList());
     dispatch(fetchItems());
-    // dispatch(resetCart());
-    setIsActive(!isLoading);
   }, [dispatch]);
 
   return (
-    <div className="w-full h-screen flex flex-col justify-between bg-white">
+    // <div className="w-full h-screen flex flex-col ">
+    //   <Header />
+    //   {isLoading && <Loading />}
+    //   {!isLoading && itemList.length === 0 && <Loading />}
+    //   {!isLoading && itemList.length > 0 && <ItemList items={itemList} />}
+    //   <Cart active={itemList.length > 0} />
+    // </div>
+    <div className="w-full h-full flex flex-col bg-white  ">
       <Header />
-      {isLoading && <Loading />}
-      {!isLoading && itemList.length === 0 && <Loading />}
-      {!isLoading && itemList.length > 0 && <ItemsList items={itemList} />}
-      <Cart active={isActive} />
+      <main className="grow">
+        {isLoading && <Loading />}
+        {!isLoading && itemList.length === 0 && <Loading />}
+        {!isLoading && itemList.length > 0 && <ItemList items={itemList} />}
+      </main>
+      <Cart active={itemList.length > 0} />
     </div>
   );
 }

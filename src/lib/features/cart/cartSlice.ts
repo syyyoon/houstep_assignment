@@ -1,10 +1,10 @@
 import { RootState } from "@/lib/store";
-import { CartItem, Item } from "../../../interfaces/interfaces";
+import { CartItem } from "../../../interfaces/interfaces";
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CartState {
+type CartState = {
   cartItems: CartItem[];
-}
+};
 
 const initialState: CartState = {
   cartItems: [],
@@ -22,7 +22,6 @@ export const cartSlice = createSlice({
       if (cartItem) {
         if (cartItem.qty < 999) cartItem.qty++;
       } else {
-        // 처음 추가되는 상황
         state.cartItems.push({
           id: action.payload.id,
           name: action.payload.name,

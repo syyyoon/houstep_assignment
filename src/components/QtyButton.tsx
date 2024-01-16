@@ -1,10 +1,11 @@
 import React from "react";
+
 type Props = {
   onIncrease: () => void;
   onDecrease: () => void;
   qty: number;
 };
-export default function QtyButton(props: Props) {
+const QtyButton = (props: Props) => {
   return (
     <div className="flex gap-2">
       <button onClick={props.onDecrease}>-</button>
@@ -12,4 +13,6 @@ export default function QtyButton(props: Props) {
       <button onClick={props.onIncrease}>+</button>
     </div>
   );
-}
+};
+
+export default QtyButton;

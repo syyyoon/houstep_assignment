@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 export default function ErrorPage() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => prev - 1);
-    }, 1000);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (countdown > 0) {
+        setCountdown((prev) => prev - 1);
+      }
+    }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [countdown]);
 
   useEffect(() => {
     if (countdown === 0) {

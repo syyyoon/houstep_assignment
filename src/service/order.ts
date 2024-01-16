@@ -1,7 +1,4 @@
-interface OrderData {
-  totalQty: number;
-  totalPrice: number;
-}
+import { OrderData } from "@/interfaces/interfaces";
 
 export async function submitOrderForm(order: OrderData) {
   try {
