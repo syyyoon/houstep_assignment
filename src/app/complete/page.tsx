@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function CompletePage() {
+function CompletePage() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
 
@@ -35,3 +35,5 @@ export default function CompletePage() {
     </div>
   );
 }
+
+export default CompletePage;

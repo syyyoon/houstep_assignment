@@ -30,10 +30,8 @@ export default function Cart({ active }: Props) {
         totalQty,
         totalPrice,
       });
-      console.log("주문 성공:", response);
       router.push("/complete");
     } catch (error) {
-      console.error("주문 실패", error);
       router.push("/error");
     } finally {
       dispatch(resetCart());

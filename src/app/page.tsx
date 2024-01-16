@@ -13,7 +13,7 @@ export default function Home() {
         priority
       />
       <Link href={"/order"}>
-        <MoveToOrderButton text="주문하러 가기" />
+        <MoveToOrderButton text="주문하러 가기" size="large" />
       </Link>
     </main>
   );

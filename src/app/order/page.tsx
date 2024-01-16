@@ -21,13 +21,6 @@ export default function OrderPage() {
   }, [dispatch]);
 
   return (
-    // <div className="w-full h-screen flex flex-col ">
-    //   <Header />
-    //   {isLoading && <Loading />}
-    //   {!isLoading && itemList.length === 0 && <Loading />}
-    //   {!isLoading && itemList.length > 0 && <ItemList items={itemList} />}
-    //   <Cart active={itemList.length > 0} />
-    // </div>
     <div className="w-full h-full flex flex-col bg-white  ">
       <Header />
       <main className="grow">

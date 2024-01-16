@@ -3,7 +3,7 @@ type Props = {
   size: "large" | "small";
 };
 
-const MoveToOrderButton = ({ text, size = "large" }: Props) => {
+const MoveToOrderButton = ({ text, size }: Props) => {
   return (
     <button
       className={` bg-white text-black  ${

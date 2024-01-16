@@ -1,5 +1,5 @@
 import { Item } from "../../../interfaces/interfaces";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 type InitialState = {
   itemList: Item[];

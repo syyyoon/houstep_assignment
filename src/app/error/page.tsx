@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function ErrorPage() {
+function ErrorPage() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(3);
 
@@ -29,3 +29,5 @@ export default function ErrorPage() {
     </div>
   );
 }
+
+export default ErrorPage;
