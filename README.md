@@ -21,6 +21,12 @@ npm run dev // localhost:3000  로컬 환경에서 실행됩니다.
 
 ## 구현 영상
 
+
+https://github.com/syyyoon/houstep_assignment/assets/109261682/b11e2ffe-a1e2-417d-9466-18ad52edac3a
+
+
+
+
 ## 구현 과제
 
 ### [홈]
